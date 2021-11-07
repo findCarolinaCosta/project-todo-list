@@ -2,17 +2,14 @@ const inputTypeTask = document.getElementById('texto-tarefa');
 const createTaskBtn = document.getElementById('criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 
-// ao clicar no botão. Fonte: https://pt.stackoverflow.com/questions/341329/inserir-li-e-a-via-javascript
 function createTask() {
   createTaskBtn.addEventListener('click', () => {
     const createItem = document.createElement('li');
     taskList.appendChild(createItem);
     createItem.innerText = inputTypeTask.value;
     inputTypeTask.value = '';
-    createItem.innerHTML = "<label class='container'><input type='checkbox' class='checkbox'> <span class = 'checkmark'></span>" + createItem.innerText + "</label>";
-    createItem.addEventListener('dblclick', () => {
-      createItem.classList.toggle('completed');
-    }); // fonte: https://qastack.com.br/programming/5497073/how-to-differentiate-single-click-event-and-double-click-event
+    createItem.innerHTML = "<label class='container'><input type='checkbox' class='checkbox'> <span class='checkmark'></span>" + createItem.innerText + "</label>";
+    createItem.onclick = function (event) { event.path[0].checked ? createItem.classList.toggle('completed') : createItem.classList.remove('completed') }
   });
 }
 createTask();
@@ -33,10 +30,11 @@ function deleteAllList() {
   while (taskList.firstChild) {
     taskList.removeChild(taskList.lastChild);
   }
-} // fonte: https://qastack.com.br/programming/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+}
 btnDeleteAllList.addEventListener('click', deleteAllList);
 
 const btnRmDone = document.getElementById('remover-finalizados');
+
 function rmTaskDone() {
   const completed = document.querySelectorAll('.completed');
   for (let i = 0; i < completed.length; i += 1) {
