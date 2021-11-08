@@ -6,18 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header>
-    <h1>Minha Lista de Tarefas</h1>
+    <h1 class="animate__animated animate__bounce">Minha Lista de Tarefas</h1>
   </header>
   <main>
-    <section>
-      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    <section class="description">
+      <p id="funcionamento" class="animate__animated animate__zoomIn">Clique duas vezes em um item para marcá-lo para
+        excluir separadamente</p>
     </section>
-    <section>
+    <section class="container-add-task">
       <input type="text" id="texto-tarefa" placeholder="Tarefa...">
       <button id="criar-tarefa">+</button>
     </section>
@@ -25,14 +28,22 @@
       <ol id="lista-tarefas"></ol>
     </section>
     <section>
-      <button id="apaga-tudo">Apagar todos os itens</button>
-      <button id="remover-finalizados">Remover tarefa finalizada</button>
       <button id="salvar-tarefas">Salvar tarefas</button>
       <button id="mover-cima">Mover tarefa para cima</button>
       <button id="mover-baixo">Mover tarefa para baixo</button>
-      <button id="remover-selecionado">Remover tarefa selecionada</button>
+      <button id="remover-selecionado" class="button button-clear">Remover tarefa selecionada</button>
+      <button id="remover-finalizados" class="button button-clear">Remover tarefa finalizada</button>
+      <button id="apaga-tudo" class="button button-clear">Apagar todos os itens</button>
     </section>
   </main>
+  <footer>
+    <p> &copy; Conteúdo por Carolina Pereira da Costa, 2021</p>
+    <section class="links">
+      <a href="https://www.linkedin.com/in/carolinapereiradacosta/" target="_blank">Linkedin</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://github.com/findCarolinaCosta" target="_blank">Github</a>
+    </section>
+  </footer>
   <script src='script.js'></script>
 </body>
 
