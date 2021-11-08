@@ -6,7 +6,6 @@
 
 body {
   background-color: rgb(245, 245, 245);
-  margin-bottom: 200px;
 }
 
 header {
@@ -44,6 +43,14 @@ ol li:hover {
 
 ol:only-child{
   list-style-type: none;
+}
+
+footer {
+  margin-top: 200px;
+  padding: 40px;
+  text-align: center;
+  background: rgb(204, 115, 255);
+  color: rgb(255, 255, 255);
 }
 
 .description {
