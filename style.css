@@ -1,20 +1,62 @@
 * {
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.completed {
+body {
+  background-color: rgb(245, 245, 245);
+}
+
+header {
+  padding: 80px;
+  text-align: center;
+  background: rgb(204, 115, 255);
+  color: rgb(255, 255, 255);
+}
+
+ol {
+  padding: 30px;
+  text-align: center;
+}
+
+ol li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+p {
+  margin: 0;
+}
+
+ol li.completed {
+  background: rgb(136, 136, 136);
+  color: rgb(255, 255, 255);
   text-decoration: line-through  2px solid red;
+}
+
+ol li:hover {
+  background: rgb(221, 221, 221);
 }
 
 ol:only-child{
   list-style-type: none;
 }
 
+.description {
+  margin: auto;
+  background: rgb(214, 214, 214);
+  padding: 30px;
+  max-width: 60%;
+  text-align: center;
+}
+
 .container {
   display: block;
   position: relative;
   padding-left: 23px;
-  margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
 }
@@ -30,19 +72,19 @@ ol:only-child{
 .checkmark {
   position: absolute;
   top: 0;
-  left: 300px;
+  left: 5%;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: rgb(238, 238, 238);
   border-radius: 2px;
 }
 
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: rgb(204, 204, 204);
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #ff0a54;
+  background-color: rgb(255, 10, 84);
 }
 
 .container .checkmark:after {
@@ -53,7 +95,7 @@ ol:only-child{
   top: 5px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid rgb(255, 255, 255);
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -62,4 +104,24 @@ ol:only-child{
 
 .container input:checked ~ .checkmark:after {
   display: block;
+}
+
+.container-add-task input {
+  width: 400px;
+  margin: 50px 0;
+}
+
+.close:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  font-size: 30px;
+  text-align: center;
 }
