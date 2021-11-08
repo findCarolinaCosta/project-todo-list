@@ -6,6 +6,7 @@
 
 body {
   background-color: rgb(245, 245, 245);
+  margin-bottom: 200px;
 }
 
 header {
@@ -106,8 +107,16 @@ ol:only-child{
   display: block;
 }
 
+.container-add-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .container-add-task input {
-  width: 400px;
+  max-width: 310px;
   margin: 50px 0;
 }
 
@@ -124,4 +133,8 @@ ol:only-child{
   width: 100px;
   font-size: 30px;
   text-align: center;
+}
+
+#criar-tarefa {
+  margin: 0 10px;
 }
