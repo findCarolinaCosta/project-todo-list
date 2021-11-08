@@ -44,7 +44,12 @@ const getChangesTask = () => {
   if (localStorage.getItem('List') !== null) {
     console.log('entrou');
     localStorage.removeItem('List');
-    localStorage.setItem('List', taskList.innerHTML);
+    let tarefas = JSON.parse(localStorage.getItem('List')) || [];
+    Object.keys(lis).forEach((item) => {
+      tarefas.push(lis[item].firstChild.lastChild.innerHTML)
+    })
+    console.log(tarefas);
+    localStorage.setItem('List', JSON.stringify(tarefas))
   }
 }
 
@@ -84,12 +89,36 @@ btnRmDone.addEventListener('click', rmTaskDone);
 
 const btnSaveTask = document.getElementById('salvar-tarefas');
 function saveTask() {
-  localStorage.setItem('List', taskList.innerHTML);
+  const tarefas = JSON.parse(localStorage.getItem('List')) || [];
+  Object.keys(lis).forEach((item) => {
+    tarefas.push(lis[item].firstChild.lastChild.innerHTML);
+  });
+  const filteredTasks = tarefas.filter((task, i) => tarefas.indexOf(task) === i);
+  localStorage.setItem('List', JSON.stringify(filteredTasks));
 }
 btnSaveTask.addEventListener('click', saveTask);
 
 function loadSaveTask() {
-  taskList.innerHTML = localStorage.getItem('List');
+  const tarefas = JSON.parse(localStorage.getItem('List'));
+  tarefas.forEach((item) => {
+    const createItem = document.createElement('li');
+    const span = document.createElement('span');
+    const txt = document.createTextNode('\u00D7');
+    createItem.innerText = item;
+    createItem.classList = 'item-list';
+    createItem.innerHTML = "<label class='container'><input type='checkbox' class='checkbox'><span class='checkmark'></span><p>" + createItem.innerText + "</p></label>";
+    span.className = 'close';
+    span.appendChild(txt);
+    createItem.appendChild(span);
+    taskList.appendChild(createItem);
+    createItem.onclick = function (event) {
+      event.path[0].checked ? createItem.classList.toggle('completed') : createItem.classList.remove('completed');
+      createItem.addEventListener('dblclick', (event) => {
+        getSelected(event);
+      });
+    }
+  })
+  getItemDisplayNone();
 }
 loadSaveTask();
 
